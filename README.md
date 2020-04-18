@@ -1,1 +1,1 @@
-# -swapi_challenge
+# swapi_challenge
