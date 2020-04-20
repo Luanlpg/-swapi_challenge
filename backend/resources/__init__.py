@@ -11,15 +11,9 @@ def initialize_resources(application):
     api = Api(application)
 
     # Endpoints
-    # from resources.user_password_recovery import UserPasswordRecoveryResource
-    # from resources.authentication import AuthenticationResource
-    # from resources.user import UserResource
-    # from resources.user import UserDetailResource
+    from resources.pokemon import PokemonResource
 
-    # api.add_resource(UserResource, '/api/user')
-    # api.add_resource(UserDetailResource, '/api/user/<int:id>')
-    # api.add_resource(UserPasswordRecoveryResource, '/api/user/recovery')
-    # api.add_resource(AuthenticationResource, '/api/login')
+    api.add_resource(PokemonResource, '/api/pokemon')
 
 
 class HttpCode(IntEnum):

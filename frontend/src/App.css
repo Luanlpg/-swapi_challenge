@@ -18,6 +18,36 @@
   font-size: large;
 }
 
+.menu {
+  float: left;
+  margin-left: 90px;
+  margin-right: 150px;
+  display: flex;
+  padding-top: 15px;
+}
+
+.menu-order-by {
+  margin-top: -1em;
+}
+
+.card {
+  margin: 2px;
+}
+
+.cards {
+  margin-top: +5em;
+}
+
+.fixo {
+  background-color: white;
+  opacity: 80%;
+  margin-top: -4.7em;
+  position: fixed;
+  display: flex;
+  height: 10%;
+  width: 100%;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
