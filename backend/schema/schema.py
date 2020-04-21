@@ -1,5 +1,5 @@
 from models import db
-from models.pokemon import PokemonModel
+from models.bucket import BucketModel
 
 from os import environ
 # importar model aqui

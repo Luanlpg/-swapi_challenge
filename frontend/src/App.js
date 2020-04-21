@@ -1,38 +1,52 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import logo from './logo.svg';
 import './App.css';
 
 import CardTable from './components/CardTable';
-import Layout from './components/Layout';
+import MainLayout from './components/MainLayout';
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-        data:[],
-        filters: {
-                order_by: null,
-                page: 1,
-                items: false,
-                pokemons: true
-        }
+        data:[]
     }
   }
 
   componentDidMount() {
-    axios.get("http://127.0.0.1:5000/api/pokemon", {params: this.state.filters})
+    localStorage.setItem("order_by", 1);
+    localStorage.setItem("page", 1);
+    localStorage.setItem("items", false);
+    localStorage.setItem("pokemons", true);
+    this.getItems();
+  }
+
+  onLoad(){
+    this.getItems();
+  }
+
+  getItems(){
+    axios.get("http://127.0.0.1:5000/api/pokemon", {params: {filters: this.syncFilters() }})
       .then(res => {
         const data = res.data;
         this.setState({ data });
       })
   }
 
-  onChildChanged(filters) {
-        this.setState({filters: filters});
-        this.componentDidMount()
+  syncFilters() {
+    let filters = {
+      order_by: JSON.parse(localStorage.getItem("order_by")),
+      page: JSON.parse(localStorage.getItem("page")),
+      pokemons: JSON.parse(localStorage.getItem("pokemons")),
+      items: JSON.parse(localStorage.getItem("items"))
+    };
+    return filters
+  }
+
+  onChildChanged() {
+      this.onLoad();
     }
 
   render() {
@@ -42,7 +56,7 @@ class App extends Component {
               <CardTable data={this.state.data}/>
             </div>
             <div className="fixo">
-              <Layout callbackParent={(filters) => this.onChildChanged(filters)}/>
+              <MainLayout callbackParent={() => this.onChildChanged()}/>
             </div>
           </div>;
   }

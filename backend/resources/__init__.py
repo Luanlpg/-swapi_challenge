@@ -12,8 +12,10 @@ def initialize_resources(application):
 
     # Endpoints
     from resources.pokemon import PokemonResource
+    from resources.pokemon import PokemonDetailResource
 
     api.add_resource(PokemonResource, '/api/pokemon')
+    api.add_resource(PokemonDetailResource, '/api/pokemon/<int:id>')
 
 
 class HttpCode(IntEnum):

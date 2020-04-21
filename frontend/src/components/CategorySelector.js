@@ -7,30 +7,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 export default class CategorySelector extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      filters: {
-              order_by: null,
-              page: 1,
-              items: false,
-              pokemons: true
-      }
-    }
-  }
 
   setPokemons(e) {
-    let filters = this.state.filters
-    filters.pokemons = e.target.checked
-    this.setState({ filters: filters });
-    this.props.callbackParent(this.state.filters);
+    localStorage.setItem("pokemons", e.target.checked);
+    localStorage.setItem("page", 1);
+    this.props.callbackParent();
   }
 
   setItems(e) {
-    let filters = this.state.filters
-    filters.items = e.target.checked
-    this.setState({ filters: filters });
-    this.props.callbackParent(this.state.filters);
+    localStorage.setItem("items", e.target.checked);
+    localStorage.setItem("page", 1);
+    this.props.callbackParent();
   }
 
   render(){
@@ -40,7 +27,7 @@ export default class CategorySelector extends React.Component {
           <FormGroup aria-label="position" row>
             <FormControlLabel
               onChange={e => this.setPokemons(e)}
-              checked={this.state.filters.pokemons}
+              checked={JSON.parse(localStorage.getItem("pokemons"))}
               value="top"
               control={<Switch color="primary" />}
               label="Pokemons"
@@ -48,7 +35,7 @@ export default class CategorySelector extends React.Component {
             />
             <FormControlLabel
               onChange={e => this.setItems(e)}
-              checked={this.state.filters.items}
+              checked={JSON.parse(localStorage.getItem("items"))}
               value="top"
               control={<Switch color="primary" />}
               label="Items"

@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -29,20 +28,22 @@ export default function MediaCard(props) {
         <CardMedia
           className={classes.media}
           image={props.item.front_default}
-          title={props.item.name}
+          title={props.item.display_name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {props.item.name}
+            {props.item.display_name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {props.item.flavor_text_entries}
           </Typography>
         </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        <a href={"/details/"+props.item.id}>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </a>
       </CardActions>
     </Card>
   );
