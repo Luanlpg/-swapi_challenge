@@ -36,10 +36,4 @@
 
 ## Navegando pela aplicação
 
-### Local
-
-- Lista de pokemons e items `localhost:3000`
-
-### Nuvem
-
 - Lista de pokemons e items `localhost:3000`

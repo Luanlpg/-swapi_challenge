@@ -1,0 +1,9 @@
+ * backend:
+    API desenvolvida em Python e Flask, que se auto sincroniza com a API pokeAPI,
+    isso foi feito para que este projeto seja aprimorado futuramente e segundo a
+    publicação: "https://phalt.github.io/pokeapi-and-swapi-going-forward/" , assim
+    como a API swAPI, a mesma será descontinuada e por precaução resolvi guardar
+    os registros atuais com o metodo `services/sync_api.py`.
+
+ * frontend:
+    Aplicação desenvolvida em ReactJS com o auxilo de material ui.
