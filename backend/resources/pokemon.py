@@ -2,6 +2,7 @@ from flask import request, jsonify
 from flask_restful import Resource
 from models.bucket import BucketModel
 from services.sync_api import SyncPokemonDataBase
+from services.utils import mask_response
 from datetime import date, datetime
 
 import requests
@@ -70,20 +71,53 @@ class PokemonResource(Resource):
 
 class PokemonDetailResource(Resource):
     def _get_item(self, id):
-        print(id)
         item = BucketModel.get_by_id(id)
 
         if item is None:
             return {'message': 'Pokemon/Item not found'}, 404
 
+        details = json.loads(item.details)
+
+        if item.category == 'pokemon':
+            print('pokemon')
+            return {
+                'id': item.id,
+                'name': item.name,
+                'display_name': item.display_name,
+                'url': item.url,
+                'category': item.category,
+                'front_default': item.front_default,
+                'flavor_text_entries': item.flavor_text_entries,
+                'height': item.height,
+                'weight': item.weight,
+                'abilities': [details['abilities'][i]['ability']['name'] for i in range(len(details['abilities']))],
+                'types': details['types'],
+                'sprites': details['sprites'],
+                'moves': details['moves'],
+                'base_experience': details['base_experience'],
+                'shape': mask_response(details['shape']),
+                'egg_groups': details['egg_groups'],
+                'color': mask_response(details['color']),
+                'generation': mask_response(details['generation']),
+                'growth_rate': mask_response(details['growth_rate']),
+                'habitat': mask_response(details['habitat']),
+                'base_happiness': details['base_happiness'],
+                'capture_rate': details['capture_rate']
+                }
+
         return {
             'id': item.id,
             'name': item.name,
+            'display_name': item.display_name,
             'url': item.url,
             'category': item.category,
             'front_default': item.front_default,
-            'flavor_text_entries': item.flavor_text_entries
-        }
+            'flavor_text_entries': item.flavor_text_entries,
+            'item_category': mask_response(details['category']['name']),
+            'cost': details['cost'],
+            'effet': details['effect']
+            }
+
 
     def get(self, id):
         print(id)

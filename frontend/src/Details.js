@@ -4,6 +4,9 @@ import axios from 'axios';
 import './App.css';
 
 import DetailsLayout from './components/DetailsLayout';
+import PokemonDetailsBox from './components/PokemonDetailsBox';
+import ItemDetailsBox from './components/ItemDetailsBox';
+import ImgBox from './components/ImgBox';
 
 
 class Details extends Component {
@@ -22,10 +25,27 @@ class Details extends Component {
       })
   }
 
+  selectTypeDetail() {
+    if (this.state.data.category === 'pokemon'){
+      return (<PokemonDetailsBox item={this.state.data}/>)
+    } else {
+      return (<ItemDetailsBox item={this.state.data}/>)
+    }
+  }
+
   render() {
-    console.log(this.state.data);
     return  <div>
-              <DetailsLayout/>
+              <div className="details">
+                <div className="imgDetails">
+                  <ImgBox item={this.state.data}/>
+                </div>
+                <div className="boxDetails">
+                  {this.selectTypeDetail()}
+                </div>
+              </div>
+              <div className="detailsFixo">
+                <DetailsLayout/>
+              </div>
             </div>
   }
 }

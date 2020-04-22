@@ -1,4 +1,5 @@
 from models.bucket import BucketModel
+from services.utils import select_english_language
 
 import requests
 import json
@@ -32,8 +33,8 @@ class SyncPokemonDataBase:
                     pokemon.category = 'pokemon'
                     pokemon.height = data['height']
                     pokemon.weight = data['weight']
-                    pokemon.display_name = data_details['names'][0]['name'] if data_details['names'][0]['language']['name'] == "en" else data_details['names'][1]['name']
-                    pokemon.flavor_text_entries = data_details['flavor_text_entries'][0]['flavor_text'] if data_details['flavor_text_entries'][0]['language']['name'] == "en" else data_details['flavor_text_entries'][1]['flavor_text']
+                    pokemon.display_name = select_english_language(data_details['names'])['name']
+                    pokemon.flavor_text_entries = select_english_language(data_details['flavor_text_entries'])['flavor_text']
                     pokemon.front_default = data['sprites']['front_default'] if data['sprites']['front_default'] else 'https://assets.pokemon.com/static2/_ui/img/favicon.ico'
                     pokemon.details = json.dumps({
                             'base_experience': data['base_experience'],
@@ -42,7 +43,7 @@ class SyncPokemonDataBase:
                             'moves': data['moves'],
                             'abilities': data['abilities'],
                             'shape': data_details['shape']['name'],
-                            'egg_goups': [data_details['egg_groups'][i]['name'] for i in range(len(data_details['egg_groups']))],
+                            'egg_groups': [data_details['egg_groups'][i]['name'] for i in range(len(data_details['egg_groups']))],
                             'color': data_details['color']['name'],
                             'generation': data_details['generation']['name'],
                             'growth_rate': data_details['growth_rate']['name'],
@@ -74,14 +75,14 @@ class SyncPokemonDataBase:
                     item.category = 'item'
                     item.height = 666
                     item.weight = 666
-                    item.display_name = data['names'][0]['name'] if data['names'][0]['language']['name'] == "en" else data['names'][1]['name']
-                    item.flavor_text_entries = data['flavor_text_entries'][0]['text'] if data['flavor_text_entries'][0]['language']['name'] == "en" else data['flavor_text_entries'][1]['text']
+                    item.display_name = select_english_language(data['names'])['name']
+                    item.flavor_text_entries = select_english_language(data['flavor_text_entries'])['text']
                     item.front_default = data['sprites']['default'] if data['sprites']['default'] else 'https://assets.pokemon.com/static2/_ui/img/favicon.ico'
                     item.details = json.dumps({
                             'attributes': data['attributes'],
                             'category': data['category'],
                             'cost': data['cost'],
-                            'effect': data['effect_entries'][0]['effect'] if data['effect_entries'][0]['language']['name'] == 'en' else data['effect_entries'][1]['effect']
+                            'effect': select_english_language(data['effect_entries'])['effect']
                             })
                     item.save()
         except Exception as e:

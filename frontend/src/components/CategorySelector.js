@@ -9,15 +9,23 @@ import FormControl from '@material-ui/core/FormControl';
 export default class CategorySelector extends React.Component {
 
   setPokemons(e) {
-    localStorage.setItem("pokemons", e.target.checked);
-    localStorage.setItem("page", 1);
-    this.props.callbackParent();
+    if (JSON.parse(localStorage.getItem("items")) === false){
+      alert('Impossible operation.')
+    } else {
+      localStorage.setItem("pokemons", e.target.checked);
+      localStorage.setItem("page", 1);
+      this.props.callbackParent();
+    }
   }
 
   setItems(e) {
-    localStorage.setItem("items", e.target.checked);
-    localStorage.setItem("page", 1);
-    this.props.callbackParent();
+    if (JSON.parse(localStorage.getItem("pokemon")) === false){
+      alert('Impossible operation.')
+    } else {
+      localStorage.setItem("items", e.target.checked);
+      localStorage.setItem("page", 1);
+      this.props.callbackParent();
+    }
   }
 
   render(){

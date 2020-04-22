@@ -30,13 +30,24 @@
   margin-top: -1em;
 }
 
-.card {
-  margin: 2px;
+.card-root {
+  margin: 10px;
+  max-width: 240px;
+  height: 450px;
+  background-color: #A9A9A9;
+  float: left;
+}
+
+.card-media {
+  height: 170px;
+  background-color: #D3D3D3;
 }
 
 .cards {
   margin-top: +5em;
+  margin-left: 25px;
 }
+
 
 .fixo {
   background-color: white;
@@ -46,6 +57,73 @@
   display: flex;
   height: 10%;
   width: 100%;
+}
+
+.attribute-title {
+    font-family: monospace;
+    clear: both;
+    color: #3f51b5;
+    float: left;
+    font-size: 100%;
+    margin: 1.25em 0 0 1.25em;
+    text-transform: none;
+    white-space: normal;
+    word-break: break-word;
+}
+
+ul {
+ list-style-type: none;
+ }
+
+.attribute-value {
+    font-family: monospace;
+    clear: both;
+    color: #212121;
+    float: left;
+    font-size: 125%;
+    margin: 0.75em 1.5em 0 1em;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.detailsFixo {
+  background-color: white;
+  opacity: 80%;
+  position: fixed;
+  display: flex;
+  height: 10%;
+  width: 100%;
+}
+
+.boxDetails {
+  width: 40rem;
+  height: 30rem;
+  margin: 8px;
+  float: right;
+}
+
+.imgDetails {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 16px;
+  float: left;
+  margin-right: 80px;
+}
+
+.details {
+  float: left;
+  margin-top: +5em;
+  margin-left: 20px;
+  font-family: monospace;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+  margin-right: 100px;
 }
 
 @keyframes App-logo-spin {
