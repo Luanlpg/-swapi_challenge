@@ -39,4 +39,4 @@ def add_headers(response):
 # Run application
 if __name__ == '__main__':
     print('Initilizing application')
-    application.run()
+    application.run(host="0.0.0.0", debug=True)
