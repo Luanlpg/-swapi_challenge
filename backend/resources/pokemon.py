@@ -79,7 +79,6 @@ class PokemonDetailResource(Resource):
         details = json.loads(item.details)
 
         if item.category == 'pokemon':
-            print('pokemon')
             return {
                 'id': item.id,
                 'name': item.name,
@@ -120,7 +119,6 @@ class PokemonDetailResource(Resource):
 
 
     def get(self, id):
-        print(id)
         try:
             return self._get_item(id)
 
