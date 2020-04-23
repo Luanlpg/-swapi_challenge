@@ -26,11 +26,6 @@
 
 - Rode o servidor local com: `npm start`
 
-- ![alt text](https://github.com/Luanlpg/assets/blob/master/pokemon1.png)
-- ![alt text](https://github.com/Luanlpg/assets/blob/master/pokemon2.png)
-- ![alt text](https://github.com/Luanlpg/assets/blob/master/pokemon3.png)
-- ![alt text](https://github.com/Luanlpg/assets/blob/master/pokemon4.png)
-
 ## Rodando a aplicação via Docker
 
 - Rode `docker build -t backend:latest backend`
@@ -42,3 +37,8 @@
 ## Navegando pela aplicação
 
 - Lista de pokemons e items `localhost:3000`
+
+- ![alt text](https://github.com/Luanlpg/assets/blob/master/pokemon1.png)
+- ![alt text](https://github.com/Luanlpg/assets/blob/master/pokemon2.png)
+- ![alt text](https://github.com/Luanlpg/assets/blob/master/pokemon3.png)
+- ![alt text](https://github.com/Luanlpg/assets/blob/master/pokemon4.png)
