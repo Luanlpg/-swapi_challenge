@@ -9,6 +9,5 @@
     Aplicação desenvolvida em ReactJS com o auxilo de material ui.
 
 * database:
-    O db sqlite esta sendo commitado pois ele ja está populado, caso queira testar
-    a sincronização apenas apague o arquivo sqlite e efetua a primeira requisição
-    no sistema, demora um pouco e nesse meio tempo a API fica ocupada. 
+    Para sincronizar o db basta efetuar a primeira requisição primeira requisição
+    no sistema, demora um pouco e nesse meio tempo a API fica ocupada.
