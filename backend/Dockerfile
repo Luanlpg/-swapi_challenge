@@ -7,9 +7,10 @@ WORKDIR /app/backend
 # Install Python dependencies
 COPY requirements.txt /app/backend
 
+
 RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
-RUN pip install --upgrade pip -r requirements.txt
+RUN apt-get install -y python3-pip python-dev build-essential
+RUN pip3 install -r requirements.txt
 
 # Add the rest of the code
 COPY . /app/backend

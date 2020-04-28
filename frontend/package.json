@@ -5,9 +5,14 @@
   "dependencies": {
     "axios": "^0.19.2",
     "react": "^16.13.1",
-    "react-router-dom": "*"
+    "react-router-dom": "*",
     "react-dom": "^16.13.1",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "@material-ui/core": "*",
+    "@material-ui/icons": "*",
+    "material-ui-image": "*",
+    "@material/button": "*",
+    "contentful": "*"
   },
   "devDependencies": {},
   "scripts": {
