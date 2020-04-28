@@ -66,6 +66,7 @@ class PokemonResource(Resource):
 
             return self.pagination(item['page'], self._list_items(categorys, order_by))
         except Exception as e:
+            print(e)
             return f"{e}", 500
 
 
