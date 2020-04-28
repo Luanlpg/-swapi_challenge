@@ -1,9 +1,0 @@
-build:
- docker:
-   web: ./Dockerfile
-release:
- image: web
- command:
-   - ./release.sh
-run:
- web: flask run --host=0.0.0.0
